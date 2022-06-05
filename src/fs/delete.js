@@ -1,3 +1,12 @@
+import { unlink } from "fs/promises";
+import { MESSAGE_ERROR } from "./constants.js";
+
+const fileToRemove = "./files/fileToRemove.txt";
+
 export const remove = async () => {
-    // Write your code here 
+    unlink(fileToRemove).catch(() => {
+        throw Error(MESSAGE_ERROR);
+    });
 };
+
+remove();
