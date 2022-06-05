@@ -1,3 +1,17 @@
+import { cp } from "fs/promises";
+import { MESSAGE_ERROR } from "./constants.js";
+
+const folder = "./files";
+const destFolder = "./files_copy";
+
 export const copy = async () => {
-    // Write your code here 
+  cp(folder, destFolder, {
+    recursive: true,
+    force: false,
+    errorOnExist: true,
+  }).catch(() => {
+    throw Error(MESSAGE_ERROR);
+  });
 };
+
+copy();
